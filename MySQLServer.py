@@ -6,9 +6,13 @@ def connect_to_database():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="samuel@2005",
-            database="alx_book_store"
+            password="your_password"
         )
+
+        cursor = connection.cursor()
+        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+
+        connection.database = 'alx_book_store'
 
         if connection.is_connected():
             print("Connected to the database 'alx_book_store' successfully!")
@@ -22,3 +26,4 @@ def connect_to_database():
             print("MySQL connection closed.")
 
 connect_to_database()
+
